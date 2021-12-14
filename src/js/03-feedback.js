@@ -11,7 +11,7 @@ const { email, message, STORAGE_FORM_KEY } = refs
 form.addEventListener('submit',onSubmitMessage)
 form.addEventListener('input', throttle(onInputChange, 500))
 
-const dataValue = {}
+let dataValue = {}
 onLoadPage()
 
 function onInputChange(event) {
@@ -35,6 +35,7 @@ function onLoadPage() {
 function onSubmitMessage(event) {
     event.preventDefault();
     console.log(`При сабмите формы :`, JSON.parse(localStorage.getItem(STORAGE_FORM_KEY)))
+    dataValue = {}
     localStorage.removeItem(STORAGE_FORM_KEY)
     form.reset()
 }
