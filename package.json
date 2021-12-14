@@ -6,7 +6,7 @@
   "homepage": "",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /DenisMalv/goit-js-hw-08-41/"
+    "build": "parcel build src/*.html --public-url https://denismalv.github.io/goit-js-hw-08-41/"
   },
   "repository": {
     "type": "git",
