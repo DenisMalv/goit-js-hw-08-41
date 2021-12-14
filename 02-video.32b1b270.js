@@ -35,4 +35,4 @@ var e=arguments[3];function t(e,t){if(!(e instanceof t))throw new TypeError("Can
 },{}],"iiAF":[function(require,module,exports) {
 "use strict";var e=o(require("lodash/throttle")),t=o(require("@vimeo/player"));function o(e){return e&&e.__esModule?e:{default:e}}const r="videoplayer-current-time",l=new t.default("vimeo-player",{id:19231868,width:640});function a(e){localStorage.setItem(r,Math.round(e.seconds)),console.log(`localStorage value = ${localStorage.getItem(r)}`)}function u(){l.setCurrentTime(localStorage.getItem(r))}u(),l.on("timeupdate",(0,e.default)(a,1e3));
 },{"lodash/throttle":"Ywd4","@vimeo/player":"zU8P"}]},{},["iiAF"], null)
-//# sourceMappingURL=/DenisMalv/goit-js-hw-08-41/02-video.32b1b270.js.map
+//# sourceMappingURL=https://denismalv.github.io/goit-js-hw-08-41/02-video.32b1b270.js.map
