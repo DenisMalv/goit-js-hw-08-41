@@ -4,38 +4,44 @@ const form = document.querySelector('.feedback-form')
 const refs = {
     email: form.elements.email,
     message: form.elements.message,
-    STORAGE_FORM_KEY:"feedback-form-state"
+    STORAGE_FORM_KEY: "feedback-form-state",
 }
-const { email, message, STORAGE_FORM_KEY } = refs
+const { email, message, STORAGE_FORM_KEY} = refs
+let dataValue = {}
+onLoadPage()
 
 form.addEventListener('submit',onSubmitMessage)
 form.addEventListener('input', throttle(onInputChange, 500))
 
-let dataValue = {}
-onLoadPage()
+
+
 
 function onInputChange(event) {
     // <======== v3.0 form +, throttle +; =========
-    dataValue[event.target.name]=event.target.value
+    dataValue[event.target.name] = event.target.value
     localStorage.setItem(STORAGE_FORM_KEY, JSON.stringify(dataValue))
-    console.log(dataValue)
+    // console.log(dataValue)
 }
 
 function onLoadPage() {
-     const storageItem = JSON.parse(localStorage.getItem(STORAGE_FORM_KEY))
-    if (storageItem ===null || storageItem ===undefined) {
+    const storageItem = JSON.parse(localStorage.getItem(STORAGE_FORM_KEY)) 
+    if (storageItem === null || storageItem ===undefined) {
         return
-    }
-    
-    email.value = storageItem.email
-    message.value = storageItem.message
-    console.log(`localStorage при обн. стр. : ${localStorage.getItem(STORAGE_FORM_KEY)}`)
+      }
+    dataValue = storageItem
+
+    console.log('storageItem.email :',storageItem.email)
+    console.log('storageItem.message :', storageItem.message)
+    email.value = storageItem.email ? storageItem.email : email.value
+    message.value = storageItem.message ? storageItem.message : message.value
+
+    console.log(`LOCALE_STORAGE при обн. стр. :`, JSON.parse(localStorage.getItem(STORAGE_FORM_KEY)))
 }
 
 function onSubmitMessage(event) {
     event.preventDefault();
-    console.log(`При сабмите формы :`, JSON.parse(localStorage.getItem(STORAGE_FORM_KEY)))
-    dataValue = {}
+    console.log(`LOCALE_STORRAGE При сабмите формы :`, JSON.parse(localStorage.getItem(STORAGE_FORM_KEY)))
+    // dataValue = {}
     localStorage.removeItem(STORAGE_FORM_KEY)
     form.reset()
 }

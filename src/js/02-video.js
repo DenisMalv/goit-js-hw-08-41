@@ -13,10 +13,13 @@ setPlayerCurrentTime()
 player.on('timeupdate', throttle(onPlayerCurrentTime, 1000));
 
 function onPlayerCurrentTime(data) {
-    localStorage.setItem(PLAYER_CURRENT_TIME, Math.round(data.seconds));
+    localStorage.setItem(PLAYER_CURRENT_TIME, data.seconds);
     console.log(`localStorage value = ${localStorage.getItem(PLAYER_CURRENT_TIME)}`);
 }
 
-function setPlayerCurrentTime(){
+function setPlayerCurrentTime() {
+    if (!localStorage.getItem(PLAYER_CURRENT_TIME)) {
+        return
+    }
     player.setCurrentTime(localStorage.getItem(PLAYER_CURRENT_TIME))
 }
