@@ -9,7 +9,6 @@ const refs = {
 const { email, message, STORAGE_FORM_KEY} = refs
 let dataValue = {}
 onLoadPage()
-console.log(dataValue)
 form.addEventListener('submit',onSubmitMessage)
 form.addEventListener('input', throttle(onInputChange, 500))
 
