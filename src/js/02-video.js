@@ -23,3 +23,5 @@ function setPlayerCurrentTime() {
     }
     player.setCurrentTime(localStorage.getItem(PLAYER_CURRENT_TIME))
 }
+
+

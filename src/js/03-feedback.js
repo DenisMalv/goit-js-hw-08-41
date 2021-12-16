@@ -9,7 +9,7 @@ const refs = {
 const { email, message, STORAGE_FORM_KEY} = refs
 let dataValue = {}
 onLoadPage()
-
+console.log(dataValue)
 form.addEventListener('submit',onSubmitMessage)
 form.addEventListener('input', throttle(onInputChange, 500))
 
@@ -20,7 +20,6 @@ function onInputChange(event) {
     // <======== v3.0 form +, throttle +; =========
     dataValue[event.target.name] = event.target.value
     localStorage.setItem(STORAGE_FORM_KEY, JSON.stringify(dataValue))
-    // console.log(dataValue)
 }
 
 function onLoadPage() {
@@ -41,7 +40,7 @@ function onLoadPage() {
 function onSubmitMessage(event) {
     event.preventDefault();
     console.log(`LOCALE_STORRAGE При сабмите формы :`, JSON.parse(localStorage.getItem(STORAGE_FORM_KEY)))
-    // dataValue = {}
+    dataValue = {}
     localStorage.removeItem(STORAGE_FORM_KEY)
     form.reset()
 }
